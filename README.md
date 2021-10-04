@@ -3,9 +3,9 @@
 
 Look at your database without ever leaving your model. Yay!
 
-`datagaze` dynamically inserts and updates schema information into your Rails models, which in effect prevents you from having to visit schema.rb and helps other developers to quickly grasp the nature of your model.
+`datagaze` dynamically inserts and updates schema information into your Rails models, which in effect prevents you from having to visit schema.rb and helps other developers to quickly grasp the nature of your models.
 
-If you are curious what problems are fixed by `datagaze` – whilst being common to other gems, such as `annotate` – skip down some sections below.
+If you are curious what problems are fixed by `datagaze` (which are prevalent in other gems, such as `annotate`) skip down some sections below.
 
 # Overview
 
@@ -54,9 +54,9 @@ group :development do
 end
 ```
 
-Afterwards, run the following command in your root project directory. This enables datagaze to update your models on every future migration.
+Afterwards, run the following command in the root of your project directory. This enables datagaze to update your models automatically on every future migration.
 
-```bash
+```
 $ bundle exec datagaze install
 ```
 
@@ -65,25 +65,25 @@ $ bundle exec datagaze install
 Besides the installation command listed above (which enables datagaze to automatically update your models on every future migration) datagaze provides you with three other commands:
 
 Run datagaze by hand with:
-```bash
-$bundle exec datagaze models
+```
+$ bundle exec datagaze models
 ```
 
 Remove all informational tables created by datagaze with:
-```bash
-$bundle exec datagaze remove
+```
+$ bundle exec datagaze remove
 ```
 
 Uninstall datagaze (and prevent it from running automatically) with:
-```bash
-$bundle exec datagaze uninstall
+```
+$ bundle exec datagaze uninstall
 ```
 
 # vs. Annotate
 
 ## The problem of the annotate gem
 
-Background: the wildly popular `annotate` gem (which is awesome, thanks guys) has a fundamental flaw, which `datagaze` fixes:
+The wildly popular `annotate` gem (which is awesome, thanks guys) has a fundamental flaw, which `datagaze` fixes:
 
 Annotate requires that your project has one single directory for all models (by default the `app/models` directory). Any models that are not placed in this directory, will produce an error and prevent ALL models from being annotated. 
 
@@ -103,7 +103,7 @@ Whilst this approach is crucial to some, annotate is better for others. So let's
 
 - Datagaze handles all models irregardless of their source location, thereby putting no constraints on your project.
 - Datagaze has a substantially smaller memory footprint than annotate.
-- Datagaze is simpler to use: due to configuration being absent, you just have install the gem and run the instructions once.
+- Datagaze is simpler to use: due to configuration being absent, you just have install the gem and run `bundle exec datagaze install` once.
 - Datagaze's source code is much easier to customize or fork (sorry folks, annotate's code base is a mess).
 
 ### Why annotate is better
