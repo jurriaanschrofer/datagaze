@@ -5,6 +5,10 @@ Look at your database without ever leaving your model. Yay!
 
 `datagaze` dynamically inserts and updates schema information into your Rails models, which in effect prevents you from having to visit schema.rb and helps other developers to quickly grasp the nature of your model.
 
+If you are curious what problems are fixed by `datagaze` – whilst being common to other gems, such as `annotate` – skip down some sections below.
+
+# Overview
+
 ## Sneak preview
 
 ```ruby
@@ -33,6 +37,49 @@ class User < ApplicationRecord
 end
 
 ```
+
+## Installation
+
+Using Rubygems in your gemfile:
+```ruby
+group :development do
+  gem 'datagaze'
+end
+```
+
+Or, alternatively, using Github in your gemfile:
+```ruby
+group :development do
+  gem 'datagaze', git: 'https://github.com/jurriaanschrofer/datagaze'
+end
+```
+
+Afterwards, run the following command in your root project directory. This enables datagaze to update your models on every future migration.
+
+```bash
+$ bundle exec datagaze install
+```
+
+## Usage
+
+Besides the installation command listed above (which enables datagaze to automatically update your models on every future migration) datagaze provides you with three other commands:
+
+Run datagaze by hand with:
+```bash
+$bundle exec datagaze models
+```
+
+Remove all informational tables created by datagaze with:
+```bash
+$bundle exec datagaze remove
+```
+
+Uninstall datagaze (and prevent it from running automatically) with:
+```bash
+$bundle exec datagaze uninstall
+```
+
+# vs. Annotate
 
 ## The problem of the annotate gem
 
