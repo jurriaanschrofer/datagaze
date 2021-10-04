@@ -10,6 +10,8 @@ datagaze models` everytime a database operation is performed.
 
 desc "Install datagaze and let it run on every migration."
 task :install do
+ 
+  puts "Datagaze is enabling to automatically run on every future migrations..."
 
   require './config/environment'
 
@@ -22,6 +24,8 @@ end
 
 desc "Uninstall datagaze and prevent it from running on every migration."
 task :uninstall do
+
+  puts "Datagaze is uninstalling and stops to automatically run on future migrations..."
 
   require './config/environment'
 
