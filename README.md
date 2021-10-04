@@ -34,29 +34,33 @@ end
 
 ```
 
-## The problem
+## The problem of the annotate gem
 
 Background: the wildly popular `annotate` gem (which is awesome, thanks guys) has a fundamental flaw, which `datagaze` fixes:
 
-`annotate` assumes your project has one single directory for all models, by default Rails' standard `app/models` directory. This means that any model that falls out of that scope, will produce an error and prevent ALL models from being annotated. For some this may just be fine, but for the many who are mainting larger applications, gems and simply projects with different file structures, this is breaking.
+Annotate requires that your project has one single directory for all models (by default the `app/models` directory). Any models that are not placed in this directory, will produce an error and prevent ALL models from being annotated. 
 
-## The Fix
+For some this may just be fine – but for the many who are maintaining larger applications, gems or simply projects that require flexibility, this is breaking.
 
-Instead of relying on a certain given file structure, as `annotate` does, `datagaze` combines the use of ruby's core method `const_source_location` with rails' method `ApplicationRecord.descendants`. In effect, `datagaze` is able to dynamically trace the location of ANY model that inherits from ApplicationRecord, no matter where it is hidden in your project.
+## The fix by datagaze
 
-## `datagaze` vs. `annotate`
+Instead of relying on a rigid file structure, datagaze combines ruby's dynamic `const_source_location` with rails' dynamic `ApplicationRecord.descendants`. 
+
+In effect, datagaze is able to dynamically trace the location of ANY model that inherits from ApplicationRecord, no matter where it is hidden in your project.
+
+## datagaze vs. annotate
 
 Whilst this approach is crucial to some, annotate is better for others. So let's make a fair comparision:
 
-### Why `datagaze` is better
+### Why datagaze is better
 
-- It handles all models, irregardless of their source location (as explained above)
-– The `datagaze` gem has a smaller memory footprint than `annotate`
-- Customization / forking `datagaze`'s source code is much easier (sorry guys, but your `annotate` code base is a mess)
+- It handles all models irregardless of their source location, thereby putting no constraints on your project.
+– The datagaze gem has a substantially smaller memory footprint than annotate.
+- Customization / forking datagaze's source code is much easier (sorry folks, but your annotate code base is a mess).
 
 
-### Why `annotate` is better
+### Why annotate is better
 
-- `datagaze` relies on ruby's `const_source_location` method, which was only released in ruby 2.7
-- `annotate` has been around for much longer and thus has more configurable options (pull requests are welcome though)
-# datagaze
+- datagaze relies on ruby's `const_source_location` method, which was only released in ruby 2.7.
+- annotate has been around for much longer and thus has more configurable options (pull requests are welcome though).
+
