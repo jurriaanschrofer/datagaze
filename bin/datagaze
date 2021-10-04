@@ -3,7 +3,10 @@ require 'datagaze'
 require 'optparse'
 require './config/environment'
 
-if ARGV.include?("models")
+if ARGV.include?("install")
+  Rake::Task[:install].invoke
+
+elsif ARGV.include?("models")
   Rake::Task[:datagaze_models].invoke
 
 elsif ARGV.include?("remove")
