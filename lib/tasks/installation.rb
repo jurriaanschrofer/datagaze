@@ -19,3 +19,14 @@ task :install do
   `cp #{source_path} #{destination_path}`
 
 end
+
+desc "Uninstall datagaze and prevent it from running on every migration."
+task :uninstall do
+
+  require './config/environment'
+
+  installation_path = Rails.root.join('lib/tasks/datagaze_on_migration.rake')
+
+  `rm #{installation_path}`
+
+end

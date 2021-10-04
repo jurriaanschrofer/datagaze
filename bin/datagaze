@@ -6,6 +6,9 @@ require './config/environment'
 if ARGV.include?("install")
   Rake::Task[:install].invoke
 
+elsif ARGV.include?("uninstall")
+  Rake::Task[:uninstall].invoke
+
 elsif ARGV.include?("models")
   Rake::Task[:datagaze_models].invoke
 

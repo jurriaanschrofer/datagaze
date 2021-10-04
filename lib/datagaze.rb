@@ -5,6 +5,6 @@ module Datagaze
   require_relative "datagaze/version"
   require_relative "datagaze/models/models"
   require_relative "tasks/datagaze_models"
-  require_relative "tasks/install"
+  require_relative "tasks/installation"
 
 end
