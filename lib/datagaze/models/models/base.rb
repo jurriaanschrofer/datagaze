@@ -1,9 +1,17 @@
 module Datagaze::Models
   class << self
 
+    # The method that creates all annotations
     def annotate_all_models
       collect_all_models.each do |model, atts|
         annotate_one_model(model: model, **atts.slice(:path, :table_name) )
+      end
+    end
+
+    # The method that removes all annotations, if desired
+    def clean_all_annotations
+      collect_all_models.each do |model, atts|
+        clean_one_model(model: model, **atts.slice(:path) )
       end
     end
 
@@ -15,6 +23,14 @@ module Datagaze::Models
       @table_name = table_name
       @columns    = columns
       @contents   = generate_schema_information
+
+      File.open(path, "w+") { _1 << @contents }
+    end
+
+    def clean_one_model(model:, path:)
+      @model    = model
+      @path     = path
+      @contents = exisiting_file_contents
 
       File.open(path, "w+") { _1 << @contents }
     end

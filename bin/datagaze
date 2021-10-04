@@ -1,0 +1,14 @@
+
+require 'datagaze'
+require 'optparse'
+require './config/environment'
+
+if ARGV.include?("models")
+  Rake::Task[:datagaze_models].invoke
+
+elsif ARGV.include?("remove")
+  Rake::Task[:datagaze_remove].invoke
+
+else
+  raise ArgumentError, "no valid rake task argument was given, options are: 'models', 'remove'"
+end

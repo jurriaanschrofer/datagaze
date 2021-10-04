@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     datagaze (0.0.1)
+      rake
 
 GEM
   remote: https://rubygems.org/
@@ -19,7 +20,6 @@ PLATFORMS
 DEPENDENCIES
   datagaze!
   pry
-  rake
 
 BUNDLED WITH
    2.2.27

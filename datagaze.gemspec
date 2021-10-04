@@ -31,7 +31,8 @@ Gem::Specification.new do |spec|
   spec.bindir       = 'bin'
   spec.executables << 'datagaze'
 
-  spec.add_development_dependency "rake"
+  spec.add_dependency "rake"
+  
   spec.add_development_dependency "pry"
 
 end
