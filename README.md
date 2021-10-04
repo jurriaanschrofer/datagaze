@@ -56,7 +56,7 @@ Whilst this approach is crucial to some, annotate is better for others. So let's
 
 - Datagaze handles all models irregardless of their source location, thereby putting no constraints on your project.
 - Datagaze has a substantially smaller memory footprint than annotate.
-- Datagaze is simpler to use: just install the gem and run the below instructions once.
+- Datagaze is simpler to use: due to configuration being absent, you just have install the gem and run the instructions once.
 - Datagaze's source code is much easier to customize or fork (sorry folks, annotate's code base is a mess).
 
 ### Why annotate is better

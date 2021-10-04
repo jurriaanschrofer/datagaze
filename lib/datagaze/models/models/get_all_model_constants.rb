@@ -3,7 +3,7 @@ module Datagaze::Models
 
     def collect_all_models     
       
-      models = ::ApplicationRecord.descendants.select { |model| !model.abstract_class? }
+      models = ApplicationRecord.descendants.select { |model| !model.abstract_class? }
       
       models.map do |model|
        
