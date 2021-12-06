@@ -9,8 +9,9 @@ module Datagaze::Models
       name_header    = "column_name".ljust(name_column_width)
       type_header    = "column_type".ljust(type_column_width)
       default_header = "column_default".ljust(default_column_width)
-      returns        = "\n\n"
-      name_header + type_header + default_header + returns
+      headers        = format_joined_column(name_header + type_header + default_header)
+      margin         = "\n\n"
+      headers + margin
     end
 
     def name_column_width  
@@ -38,10 +39,16 @@ module Datagaze::Models
     end
 
     def column_information(column)
-      @column = column
-      name_column_value + type_column_value + default_column_value
+      @column  = column
+      contents = name_column_value + type_column_value + default_column_value
+      format_joined_column(contents)
     end
 
+    def format_joined_column(column)
+      # Remove trailing whitespaces, since many linters will try to remove them and thus make your
+      # watchers run wild, when editing hunderds of models simultaneously.
+      column.strip
+    end
 
   end
 end
