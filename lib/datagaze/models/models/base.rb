@@ -62,7 +62,7 @@ module Datagaze::Models
     end
 
     def remove_previous_annotation(file_contents)
-      annotation_matcher = /^=begin\n\n== Schema information.*^?(?>=end)/m
+      annotation_matcher = /^=begin\n\n== Schema information.*^?(?>=end\n)/m
       file_contents.gsub(annotation_matcher, '')
     end
 
