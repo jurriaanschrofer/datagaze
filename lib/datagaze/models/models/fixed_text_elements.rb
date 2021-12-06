@@ -17,7 +17,6 @@ module Datagaze::Models
 
 
       =end
-
       EOL
     end
 
