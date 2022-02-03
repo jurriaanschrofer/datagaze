@@ -20,11 +20,15 @@ module Datagaze::Models
     def annotate_one_model(model:, path:, table_name:)
       @model      = model
       @path       = path
-      @table_name = table_name
+      @table_name = suf_and_prefixed_table_name(table_name)
       @columns    = columns
       @contents   = generate_schema_information
 
       File.open(path, "w+") { _1 << @contents }
+    end
+
+    def suf_and_prefixed_table_name(table_name)
+      [@model.table_name_prefix, table_name, @model.table_name_suffix].join
     end
 
     def clean_one_model(model:, path:)
